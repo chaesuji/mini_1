@@ -81,13 +81,79 @@
         return $result;
     }
 
+        // 특정 게시글 정보 검색
+        function select_board_info_no( &$param_no ){
+            $sql = 
+            " SELECT "
+                ." board_no "
+                ." ,board_title "
+                ." ,board_contents "
+            ." FROM "
+                ." board_info "
+            ." WHERE "
+                ." board_no = :board_no ";
+            
+            $arr_prepare = array(
+                ":board_no" => $param_no
+            );
+            $conn = null;
+            try {
+                db_conn( $conn );
+                $stmt = $conn->prepare( $sql );
+                $stmt->execute( $arr_prepare );
+                $result = $stmt->fetchAll();
+            } catch (Exception $e) {
+                return $e->getMessage();
+            } finally {
+                $conn = null;
+            }
+            return $result[0];
+        }
     // TODO : test Start
-    // $arr = 
-    //     array(
-    //         "limit_num" => 5
-    //         ,"offset" => 0
-    //     );
-    // $result = select_board_info_paging( $arr );
-    // print_r( $result );
+    $i = 1;
+        // print_r(select_board_info_no( $i ));
     // TODO : test End
+
+    // 게시판 특정 게시물 정보 수정
+    function update_board_info_no( &$param_arr ){
+        $sql = 
+            " UPDATE "
+                ." board_info "
+            ." SET "
+                ." board_title = :board_title "
+                ." ,board_contents = :board_contents "
+            ." WHERE "
+                ." board_no = :board_no ";
+
+        $arr_prepare = 
+            array(
+                ":board_title" => $param_arr["board_title"]
+                ,":board_contents" => $param_arr["board_contents"]
+                ,":board_no" => $param_arr["board_no"]
+            );
+        $conn = null;
+        try {
+            db_conn( $conn ); // PDO object set(=DB 연결)
+            $conn->beginTransaction(); // Transcation 시작
+            $stmt = $conn->prepare( $sql ); // statement object set
+            $stmt->execute( $arr_prepare ); // DB request
+            $result_cnt = $stmt->rowCount(); // rowCount() : update된 컬럼의 갯수를 나타냄
+            $conn->commit();
+        } catch (Exception $e) {
+            $conn->rollback();
+            return $e->getMessage();
+        } finally {
+            $conn = null;
+        }
+        return $result_cnt;
+    }
+
+    // $arr =
+    //     array(
+    //         "board_no" => 1
+    //         ,"board_title" => "test1"
+    //         ,"board_contents" => "test1"
+    //     );
+
+    // echo update_board_info_no( $arr );
 ?>

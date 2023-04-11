@@ -27,7 +27,7 @@
         $page_num = 1; // 없다면 page_num에 1 저장해서 첫 번째 페이지부터 나타나도록 함
     }
 
-    $limit_num = 5; // 한 페이지 당 게시물의 갯수
+    $limit_num = 10; // 한 페이지 당 게시물의 갯수
 
     // 게시판 정보 테이블 전체 카운트 획득
     $result_cnt = select_board_info_cnt(); // -> 2차원 연상 배열 : array ( [0] => Array ( [cnt] => 20 ) )
@@ -49,7 +49,7 @@
     // print_r($max_page_num);
 
     // 터미널 + 옆 ▽(화살표) -> Command Prompt
-    // xcopy D:\WorkSpace\mini_board\src C:\Apache24\htdocs\src \E \H \F \Y
+    // xcopy D:\WorkSpace\mini_board\src C:\Apache24\htdocs\src /E /H /F /Y
     // 명령어(파일 복사) 복사할 파일의 경로 복사한 파일을 붙여넣기할 경로
     // /E : 디렉터리와 하위 디렉터리를 (비어 있어도) 복사한다.
     // /F : 복사하는 동안 원본과 대상 파일의 전체 경로 를 표시한다.
@@ -63,16 +63,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" 
-    crossorigin="anonymous">
-    <style>
-        a{text-decoration: none;
-    text-color:#96b3f0;}
-    </style>
+    <link rel="stylesheet" href="./CSS/board.css">
 </head>
 <body>
-    <table class="table table-hover">
+
+    <h1>Board</h1>
+    <table>
         <thead>
             <tr>
                 <th>게시글 번호</th>
@@ -86,7 +82,11 @@
             ?>
                 <tr>
                     <td><?php echo $recode["board_no"]?></td>
-                    <td><?php echo $recode["board_title"]?></td>
+                    <td class="title_td">
+                        <a class="update_btn" href="board_update.php?board_no=<?php echo $recode["board_no"]?>">
+                            <?php echo $recode["board_title"]?>
+                        </a>
+                    </td>
                     <td><?php echo $recode["board_write_date"]?></td>
                 </tr>
             <?php
@@ -94,14 +94,79 @@
             ?>
         </tbody>
     </table>
-    <?php
-    for ($i=1; $i<=$max_page_num; $i++) { 
-    ?>
-        <a href='board_list.php?page_num=<?php echo $i ?>'>
-            <?php echo $i ?>
-        </a>
-    <?php
-    }
-    ?>
+        <?php
+            for ($i=1; $i<=$max_page_num; $i++) { 
+            ?>
+            <div>
+                <a class="paging" href='board_list.php?page_num=<?php echo $i ?>'>
+                    <?php echo $i ?>
+                </a>
+            </div>
+        <?php
+        }
+        ?>
+    <!-- <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">
+        🐬
+        </div>
+        <div class="snowflake">
+        🐙
+        </div>
+        <div class="snowflake">
+        🦑
+        </div>
+        <div class="snowflake">
+        🐠
+        </div>
+        <div class="snowflake">
+        🦈
+        </div>
+        <div class="snowflake">
+        🐳
+        </div>
+        <div class="snowflake">
+        🐟
+        </div>
+        <div class="snowflake">
+        🐋
+        </div>
+        <div class="snowflake">
+        🐡
+        </div>
+        <div class="snowflake">
+        🦐
+        </div>
+    </div> -->
+    <div class="snowflake">
+        <・ )))><<
+        </div>
+        <div class="snowflake">
+        <・ )))><<
+        </div>
+        <div class="snowflake">
+        <・ )))><<
+        </div>
+        <div class="snowflake">
+        <・ )))><<
+        </div>
+        <div class="snowflake">
+        <・ )))><<
+        </div>
+        <div class="snowflake">
+        <・ )))><<
+        </div>
+        <div class="snowflake">
+        <・ )))><<
+        </div>
+        <div class="snowflake">
+        <・ )))><<
+        </div>
+        <div class="snowflake">
+        <・ )))><<
+        </div>
+        <div class="snowflake">
+        <・ )))><<
+        </div>
+</div>
 </body>
 </html>

@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'EF_cucumbersalad';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_cucumbersalad.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TAEBAEKmilkyway';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    text-align:center;
+}
+table{
+    border-collapse:collapse;
+    line-height: 1.5;
+    width:50em;
+    margin:0 auto;
+    background-color:rgba(255, 255, 255 ,0.5);
+    border-radius:30px; 
+}
+thead th{
+    padding:10px;
+    font-weight:bold;
+    vertical-align: top;
+    color: #369;
+    border-bottom : 1px solid #036;
+    font-family: 'SDSamliphopangche_Outline';
+    font-size:25px;
+}
+td{
+    width: 350px;
+    padding: 10px;
+    vertical-align:top;
+    border-top: 1px solid #ccc;
+    text-align:center;
+    font-family: 'TAEBAEKmilkyway';
+}
+h1{
+    text-align:center;
+    font-weight:300;
+    font-family: 'SDSamliphopangche_Outline';
+    color:#369;
+}
+div{
+    font-size:0;
+    display:inline-block;
+    margin-top:7px;
+}
+.paging{
+    display:block;
+    margin:0 3px;
+    border-radius:15px;
+    width: 30px;
+    height:30px;
+    line-height:28px;
+    text-align:center;
+    background-color:#fff;
+    font-size:13px;
+    color:#999999;
+    text-decoration:none;
+    background-color:rgba(255, 255, 255, 0.5);
+    /* font-family: 'EF_cucumbersalad'; */
+}
+a:hover{
+    /* color:#369; */
+    background-color: rgb(204, 229, 255);
+}
+a:focus{
+    background-color: rgb(204, 229, 255);
+}
+.update_btn{
+    text-decoration: none;
+    /* color:#036 */
+}
+.update_btn:visited, .update_btn:link{
+    color:#000;
+}
+.title_td:hover{
+    background-color:aliceblue;
+}
+.update_btn:hover{
+    background-color:rgba(255, 255, 255, 0);
+}
+
+body{
+    background:linear-gradient(0deg, #1E90FF, #5AE0FF, #E1F6FA);
+    background-repeat:no-repeat;
+    /* background-size:auto 100%; */
+    background-size:contain;
+    /* min-height: 100%; */
+    /* min-width:100%;
+    padding:0; */
+}
+
+  /* customizable snowflake styling */
+.snowflake {
+    /* color: #2b1f55; */
+    color:#369;
+    font-size: 1em;
+    font-family: Arial;
+    text-shadow: 0 0 1px #000;
+}
+
+@-webkit-keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@-webkit-keyframes snowflakes-shake{0%{-webkit-transform:translateX(0px);transform:translateX(0px)}50%{-webkit-transform:translateX(80px);transform:translateX(80px)}100%{-webkit-transform:translateX(0px);transform:translateX(0px)}}@keyframes snowflakes-fall{0%{top:-10%}100%{top:100%}}@keyframes snowflakes-shake{0%{transform:translateX(0px)}50%{transform:translateX(80px)}100%{transform:translateX(0px)}}.snowflake{position:fixed;top:-10%;z-index:9999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default;-webkit-animation-name:snowflakes-fall,snowflakes-shake;-webkit-animation-duration:10s,3s;-webkit-animation-timing-function:linear,ease-in-out;-webkit-animation-iteration-count:infinite,infinite;-webkit-animation-play-state:running,running;animation-name:snowflakes-fall,snowflakes-shake;animation-duration:10s,3s;animation-timing-function:linear,ease-in-out;animation-iteration-count:infinite,infinite;animation-play-state:running,running}.snowflake:nth-of-type(0){left:1%;-webkit-animation-delay:0s,0s;animation-delay:0s,0s}.snowflake:nth-of-type(1){left:10%;-webkit-animation-delay:1s,1s;animation-delay:1s,1s}.snowflake:nth-of-type(2){left:20%;-webkit-animation-delay:6s,.5s;animation-delay:6s,.5s}.snowflake:nth-of-type(3){left:30%;-webkit-animation-delay:4s,2s;animation-delay:4s,2s}.snowflake:nth-of-type(4){left:40%;-webkit-animation-delay:2s,2s;animation-delay:2s,2s}.snowflake:nth-of-type(5){left:50%;-webkit-animation-delay:8s,3s;animation-delay:8s,3s}.snowflake:nth-of-type(6){left:60%;-webkit-animation-delay:6s,2s;animation-delay:6s,2s}.snowflake:nth-of-type(7){left:70%;-webkit-animation-delay:2.5s,1s;animation-delay:2.5s,1s}.snowflake:nth-of-type(8){left:80%;-webkit-animation-delay:1s,0s;animation-delay:1s,0s}.snowflake:nth-of-type(9){left:90%;-webkit-animation-delay:3s,1.5s;animation-delay:3s,1.5s}

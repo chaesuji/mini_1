@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'EF_cucumbersalad';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2210-EF@1.0/EF_cucumbersalad.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'TAEBAEKmilkyway';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/TAEBAEKmilkyway.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SDSamliphopangche_Outline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    margin: 0 auto;
+    margin-top:1em;
+}
+h1{
+    text-align:left;
+    font-weight:300;
+    font-family: 'SDSamliphopangche_Outline';
+    color:#369;
+}
+form{
+    width:45em;
+    height:28em;
+    border:1px solid #ccc;
+    border-radius:20px;
+    padding:1em;
+    /* display: flex; */
+}
+.modify_div{
+    margin:1em;
+}
+label{
+    font-family: 'Cafe24SsurroundAir';
+    position:relative;
+    bottom:-3px;
+    /* top:-1.5px; */
+}
+.text_area_label{
+    font-family: 'Cafe24SsurroundAir';
+    position:relative;
+    top:-15px;
+}
+input{
+    border:0;
+    border-bottom:1px solid #ccc;
+    padding:0.5em;
+    font-family: 'Cafe24SsurroundAir';
+}
+input:focus {
+    outline: none;
+}
+textarea{
+    /* border:0;
+    border-bottom:1px solid #ccc; */
+    border:1px solid #ccc;
+    border-radius:3px;
+    padding: 0.5em;
+    font-family: 'Cafe24SsurroundAir';
+    height:auto;
+    /* vertical-align: bottom; */
+    resize:none;
+}
+textarea{
+    outline: none;
+}
+button{
+    width:70px;
+    height:25px;
+    border:0px solid #fff;
+    border-radius: 20px;
+    background-color: #369;
+    color:#fff;
+    font-family: 'Cafe24SsurroundAir';
+}
+
+.btn_div{
+    text-align:right;
+}
