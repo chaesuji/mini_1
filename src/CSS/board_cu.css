@@ -22,38 +22,17 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'SDSamliphopangche_Basic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Basic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 * {
     margin: 0 auto;
     margin-top:1em;
 }
-h1{
-    text-align:left;
-    font-weight:300;
-    font-family: 'SDSamliphopangche_Outline';
-    color:#369;
-}
-form{
-    width:45em;
-    height:28em;
-    border:1px solid #ccc;
-    border-radius:20px;
-    padding:1em;
-    /* display: flex; */
-}
-.modify_div{
-    margin:1em;
-}
-label{
-    font-family: 'Cafe24SsurroundAir';
-    position:relative;
-    bottom:-3px;
-    /* top:-1.5px; */
-}
-.text_area_label{
-    font-family: 'Cafe24SsurroundAir';
-    position:relative;
-    top:-15px;
-}
+
 input{
     border:0;
     border-bottom:1px solid #ccc;
@@ -73,8 +52,6 @@ textarea{
     height:auto;
     /* vertical-align: bottom; */
     resize:none;
-}
-textarea{
     outline: none;
 }
 button{
@@ -86,7 +63,34 @@ button{
     color:#fff;
     font-family: 'Cafe24SsurroundAir';
 }
-
+.btn_a{
+    color:#fff;
+    text-decoration: none;
+}
 .btn_div{
+    margin-top: 2em;;
     text-align:right;
+}
+.board_header:visited, .board_header:link{
+    color:#369;
+    text-decoration: none;
+}
+.header{
+    display: inline;
+}
+.board_header{
+    text-align:left;
+    font-weight:300;
+    font-family: 'SDSamliphopangche_Outline';
+    color:#369;
+}
+h2{
+    text-align:left;
+    font-weight:300;
+    font-family: 'SDSamliphopangche_Basic';
+    color:#369;
+    display: inline;
+    position:relative;
+    bottom:28px;
+    left:165px;
 }

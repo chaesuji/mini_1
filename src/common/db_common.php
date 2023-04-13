@@ -88,6 +88,7 @@
                 ." board_no "
                 ." ,board_title "
                 ." ,board_contents "
+                ." ,board_write_date "
             ." FROM "
                 ." board_info "
             ." WHERE "
@@ -147,7 +148,6 @@
         }
         return $result_cnt;
     }
-
     // $arr =
     //     array(
     //         "board_no" => 1
@@ -156,4 +156,83 @@
     //     );
 
     // echo update_board_info_no( $arr );
+
+    // 게시판 특정 게시물 삭제
+    function delete_board_info_no( &$param_no ){
+        $sql =
+            " UPDATE "
+                ." board_info "
+            ." SET "
+                ." board_del_flg = '1' "
+                ." ,board_del_date = NOW() "
+            ." WHERE "
+                ." board_no = :board_no ";
+
+        $arr_prepare = 
+            array(
+                ":board_no" => $param_no
+            );
+        $conn = null;
+        try {
+            db_conn( $conn ); 
+            $conn->beginTransaction(); 
+            $stmt = $conn->prepare( $sql ); 
+            $stmt->execute( $arr_prepare ); 
+            $result_cnt = $stmt->rowCount(); 
+            $conn->commit();
+        } catch (Exception $e) {
+            $conn->rollback();
+            return $e->getMessage();
+        } finally {
+            $conn = null;
+        }
+        return $result_cnt;
+    }
+
+    // 게시판 게시물 입력 
+    function insert_board_info( &$param_arr ){
+        $sql = 
+            " INSERT INTO "
+                ." board_info "
+            ." ( "
+                ." board_title "
+                ." ,board_contents "
+                ." ,board_write_date "
+            ." ) "
+            ." VALUES "
+            ." ( "
+                ." :board_title "
+                ." ,:board_contents "
+                ." ,NOW() "
+            ." ) ";
+
+        $arr_prepare =
+            array(
+                ":board_title" => $param_arr["board_title"]
+                ,":board_contents" => $param_arr["board_contents"]
+            );
+        
+        $conn = null;
+        try {
+            db_conn( $conn ); 
+            $conn->beginTransaction(); 
+            $stmt = $conn->prepare( $sql ); 
+            $stmt->execute( $arr_prepare ); 
+            $result_cnt = $stmt->rowCount(); 
+            $conn->commit();
+        } catch (Exception $e) {
+            $conn->rollback();
+            return $e->getMessage();
+        } finally {
+            $conn = null;
+        }
+        return $result_cnt;
+    }
+
+    // TO DO 
+    // $arr = array(
+    //     "board_title" => "test", 
+    //     "board_contents" => "test"
+    // );
+    // echo insert_board_info($arr);
 ?>

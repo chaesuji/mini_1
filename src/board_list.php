@@ -3,7 +3,7 @@
     // $_SERVER['DOCUMENT_ROOT'] : 서버의 기본 경로를 확인, 
     // httpd.conf 파일에 설정된 웹 서버의 루트 디렉터리(= 현재 실행되고 있는 위치)를 의미
     // htdocs가 루트 디렉토리로 $_SERVER['DOCUMENT_ROOT'] 함수를 사용 
-    define( "URL_DB", DOC_ROOT."src/common/db_common.php"); // 상수를 선언해 db_common.php 파일과 연결
+    define( "URL_DB", DOC_ROOT."src/mini_board/common/db_common.php"); // 상수를 선언해 db_common.php 파일과 연결
     // echo DOC_ROOT;
     include_once( URL_DB );
     // $arr_get = $_GET;
@@ -50,6 +50,7 @@
 
     // 터미널 + 옆 ▽(화살표) -> Command Prompt
     // xcopy D:\WorkSpace\mini_board\src C:\Apache24\htdocs\src /E /H /F /Y
+    // xcopy D:\WorkSpace\mini_board\src C:\Apache24\htdocs\src\mini_board /E /H /F /Y
     // 명령어(파일 복사) 복사할 파일의 경로 복사한 파일을 붙여넣기할 경로
     // /E : 디렉터리와 하위 디렉터리를 (비어 있어도) 복사한다.
     // /F : 복사하는 동안 원본과 대상 파일의 전체 경로 를 표시한다.
@@ -64,109 +65,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판</title>
     <link rel="stylesheet" href="./CSS/board.css">
+    <script src="./JS/board.js"></script>
 </head>
 <body>
-
-    <h1>Board</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>게시글 번호</th>
-                <th>게시글 제목</th>
-                <th>작성일</th>
-            </tr>
-        </thead>
-        <tbody class="table-group-divider">
-            <?php
-                foreach ($result_paging as $recode) {
-            ?>
+<div class="entire">
+<h1>Mini Board</h1>
+<button type="button"><a class="btn_a" href="board_insert.php">입력</a></button>
+    <div class="table_div">
+        <table class="list_table">
+            <thead>
                 <tr>
-                    <td><?php echo $recode["board_no"]?></td>
-                    <td class="title_td">
-                        <a class="update_btn" href="board_update.php?board_no=<?php echo $recode["board_no"]?>">
-                            <?php echo $recode["board_title"]?>
-                        </a>
-                    </td>
-                    <td><?php echo $recode["board_write_date"]?></td>
+                    <th>게시글 번호</th>
+                    <th>게시글 제목</th>
+                    <th>작성일</th>
                 </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <?php
+                    foreach ($result_paging as $recode) {
+                ?>
+                    <tr>
+                        <td><?php echo $recode["board_no"]?></td>
+                        <td class="detail_td">
+                            <a class="detail_a" href="board_detail.php?board_no=<?php echo $recode["board_no"]?>">
+                                <?php echo $recode["board_title"]?>
+                            </a>
+                        </td>
+                        <td><?php echo $recode["board_write_date"]?></td>
+                    </tr>
+                <?php
+                    }
+                ?>
+            </tbody>
+        </table>
+        </div>
+        <?php if($page_num <= 1){ ?>
+            <a class="paging_a" href="board_list.php?page_num=1"><</a>
+        <?php } else { ?>
+            <a class="paging_a" href="board_list.php?page_num=<?php echo ($page_num-1) ?>"><</a>
+        <?php }; ?>
             <?php
-                }
+                for ($i=1; $i<=$max_page_num; $i++) { 
+                ?>
+                <div class ="paging_div">
+                    <a class="paging_a" href='board_list.php?page_num=<?php echo $i ?>'>
+                        <?php echo $i ?>
+                    </a>
+                </div>
+            <?php
+            }
             ?>
-        </tbody>
-    </table>
-        <?php
-            for ($i=1; $i<=$max_page_num; $i++) { 
-            ?>
-            <div>
-                <a class="paging" href='board_list.php?page_num=<?php echo $i ?>'>
-                    <?php echo $i ?>
-                </a>
-            </div>
-        <?php
-        }
-        ?>
-    <!-- <div class="snowflakes" aria-hidden="true">
-        <div class="snowflake">
-        🐬
-        </div>
-        <div class="snowflake">
-        🐙
-        </div>
-        <div class="snowflake">
-        🦑
-        </div>
-        <div class="snowflake">
-        🐠
-        </div>
-        <div class="snowflake">
-        🦈
-        </div>
-        <div class="snowflake">
-        🐳
-        </div>
-        <div class="snowflake">
-        🐟
-        </div>
-        <div class="snowflake">
-        🐋
-        </div>
-        <div class="snowflake">
-        🐡
-        </div>
-        <div class="snowflake">
-        🦐
-        </div>
-    </div> -->
-    <div class="snowflake">
-        <・ )))><<
-        </div>
-        <div class="snowflake">
-        <・ )))><<
-        </div>
-        <div class="snowflake">
-        <・ )))><<
-        </div>
-        <div class="snowflake">
-        <・ )))><<
-        </div>
-        <div class="snowflake">
-        <・ )))><<
-        </div>
-        <div class="snowflake">
-        <・ )))><<
-        </div>
-        <div class="snowflake">
-        <・ )))><<
-        </div>
-        <div class="snowflake">
-        <・ )))><<
-        </div>
-        <div class="snowflake">
-        <・ )))><<
-        </div>
-        <div class="snowflake">
-        <・ )))><<
-        </div>
+        <?php if($page_num >= $max_page_num){ ?>
+            <a class="paging_a" href="board_list.php?page_num=1">></a>
+        <?php } else { ?>
+            <a class="paging_a" href="board_list.php?page_num=<?php echo ($page_num+1) ?>">></a>
+        <?php }; ?>
+        
+    </div>
 </div>
+    <div class="fish">
+        <・ )))><<
+        </div>
+        <div class="fish">
+        <・ )))><<
+        </div>
+        <div class="fish">
+        <・ )))><<
+        </div>
+        <div class="fish">
+        <・ )))><<
+        </div>
+        <div class="fish">
+        <・ )))><<
+        </div>
+        <div class="fish">
+        <・ )))><<
+        </div>
+        <div class="fish">
+        <・ )))><<
+        </div>
+        <div class="fish">
+        <・ )))><<
+        </div>
+        <div class="fish">
+        <・ )))><<
+        </div>
+        <div class="fish">
+        <・ )))><<
+        </div>
+    </div>
+    
 </body>
 </html>

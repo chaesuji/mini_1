@@ -1,6 +1,7 @@
 <?php
     define( "DOC_ROOT", $_SERVER["DOCUMENT_ROOT"]."/" ); 
-    define( "URL_DB", DOC_ROOT."src/common/db_common.php");
+    define( "URL_DB", DOC_ROOT."src/mini_board/common/db_common.php");
+    define( "URL_HEADER", DOC_ROOT."src/mini_board/board_header.php");
     include_once( URL_DB );
     // var_dump($_SERVER, $_GET, $_POST);
 
@@ -29,7 +30,12 @@
 
         // update 
         $result_cnt = update_board_info_no( $arr_info );
-        $result_info = select_board_info_no( $arr_post["board_no"] );
+
+        // select 
+        // $result_info = select_board_info_no( $arr_post["board_no"] ); // 0412 del
+
+        header( "Location: board_detail.php?board_no=".$arr_post["board_no"] ); // 수정을 한 후 디테일 페이지로 넘어감
+        exit(); // 위의 행에서 redirect를 했기 때문에 이후의 소스코드는 실행할 필요가 없음 
     }
 
     //print_r($result_info);
@@ -41,29 +47,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSS/board_update.css">
+    <link rel="stylesheet" href="./CSS/board_r.css">
+    <script src="./JS/board.js"></script>
     <title>수정</title>
 </head>
 <body>
-    <form action="board_update.php" method="post">
-        <h1>Modify</h1>
+    <form action="board_update.php" method="post" class="form_cu">
+        <div class="board_modify">
+            <?php include("./board_header.php"); ?>
             <hr>
-            <div class="modify_div">
-                <label for="bno">게시글 번호 : </label>
-                <input type="text" name="board_no" id="bno" value="<?php echo $result_info['board_no'] ?>" readonly>
-                <br>
-                <label for="title">게시글 제목 : </label>
-                <input type="text" name="board_title" id="title" value="<?php echo $result_info['board_title'] ?>">
-                <br>
-                <label for="content" class="text_area_label">게시글 내용 : </label>
-                <textarea name="board_contents" id="contents" cols="50" rows="10"><?php echo $result_info['board_contents'] ?></textarea>
-                <!-- <input type="text" name="board_contents" id="contents" value="<?php echo $result_info['board_contents'] ?>"> -->
-                <br>
-                <div class="btn_div">
-                    <button type="submit">수정</button>
-                    <button type="button" onclick="location.href='board_list.php'" >리스트</button>
-                </div>
+            <label for="bno">게시글 번호 : </label>
+            <input type="text" name="board_no" id="bno" value="<?php echo $result_info['board_no'] ?>" readonly>
+            <br>
+            <label for="title">게시글 제목 : </label>
+            <input type="text" name="board_title" id="title" value="<?php echo $result_info['board_title'] ?>">
+            <br>
+            <label for="content" class="text_area_label_u">게시글 내용 : </label>
+            <textarea name="board_contents" id="contents" cols="50" rows="10"><?php echo $result_info['board_contents'] ?></textarea>
+            <!-- <input type="text" name="board_contents" id="contents" value="<?php echo $result_info['board_contents'] ?>"> -->
+            <br>
+            <div class="btn_div">
+                <!-- <button type="button" onclick="history.back();">이전</button> -->
+                <button type="button">
+                    <a class="btn_a" href="board_detail.php?board_no=<?php echo $result_info["board_no"] ?>">취소</a>
+                </button>
+                <button type="submit">확인</button>
             </div>
-        </form>
+        </div>
+    </form>
 </body>
 </html>
