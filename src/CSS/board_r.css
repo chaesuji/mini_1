@@ -45,11 +45,11 @@ form{
 .board_detail, .board_insert, .board_modify{
     width:45em;
     height:28em;
-    border:1px solid #ccc;
+    border:none;
     border-radius:20px;
     padding:1em;
     margin:3em;
-    background-color: rgba(255, 255, 255 ,0.5);
+    background-color: rgba(255, 255, 255 ,0.2);
 }
 .detail_p_content {
     text-decoration-line: underline;
@@ -108,14 +108,20 @@ label{
     position:relative;
     bottom:-3px;
 }
-.textarea_label_u, .textarea_label_c{
+.textarea_label_u{
     font-family: 'Cafe24SsurroundAir';
     position:relative;
     top:-15px;
 }
+.textarea_label_c{
+    font-family: 'Cafe24SsurroundAir';
+    position:relative;
+    top:50px;
+}
 .insert_textarea{
     margin-top:1em;
     padding:1.5em;
+    border: 1px solid #616969;
 }
 input{
     border:0;
@@ -143,4 +149,14 @@ h2{
     position:relative;
     bottom:28px;
     left:165px;
+}
+.wave_img_1{
+    position:absolute;
+    bottom:0px;
+    z-index: -1;
+}
+.wave_img_2{
+    position:absolute;
+    top:0px;
+    z-index:-2;
 }

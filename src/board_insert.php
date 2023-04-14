@@ -28,9 +28,18 @@
     <link rel="stylesheet" href="./CSS/board_r.css">
     <script src="./JS/board.js"></script>
     <title>입력</title>
+    <style>
+        body{
+            /* background-image: url("./img/wave.png"); */
+            background: linear-gradient(45deg, #f7e2cc, #a7d7d9, #01b8c8) no-repeat;
+        }
+    </style>
 </head>
 <body>
     <form action="board_insert.php" method="post" class="form_cu">
+        <div class="wave_img_2">
+            <img src="./img/cloud.png" alt="바다2">
+        </div>
         <div class="board_insert">
             <?php include("./board_header.php"); ?>
             <hr>
@@ -45,6 +54,9 @@
                 <button type="submit">입력</button>
                 <button type="button" onclick="location.href='board_list.php'">이전</button>
             </div>
+        </div>
+        <div class="wave_img_1">
+            <img src="./img/wave.png" alt="바다1">
         </div>
     </form>
 </body>
