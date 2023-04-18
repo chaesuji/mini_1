@@ -100,6 +100,11 @@
         </table>
         </div>
         <?php if($page_num <= 1){ ?>
+            <a class="paging_a" href="#"><<</a>
+        <?php } else { ?>
+            <a class="paging_a" href="board_list.php?page_num=1"><<</a>
+        <?php }; ?>
+        <?php if($page_num <= 1){ ?>
             <a class="paging_a" href="board_list.php?page_num=1"><</a>
         <?php } else { ?>
             <a class="paging_a" href="board_list.php?page_num=<?php echo ($page_num-1) ?>"><</a>
@@ -119,6 +124,11 @@
             <a class="paging_a" href="board_list.php?page_num=1">></a>
         <?php } else { ?>
             <a class="paging_a" href="board_list.php?page_num=<?php echo ($page_num+1) ?>">></a>
+        <?php }; ?>
+        <?php if($page_num >= $max_page_num){ ?>
+            <a class="paging_a" href="#">>></a>
+        <?php } else { ?>
+            <a class="paging_a" href="board_list.php?page_num=<?php echo $max_page_num ?>">>></a>
         <?php }; ?>
         
     </div>

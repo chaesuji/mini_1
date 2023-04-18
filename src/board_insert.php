@@ -7,10 +7,7 @@
     $http_method = $_SERVER["REQUEST_METHOD"];
     if($http_method === "POST"){
         $arr_post = $_POST;
-        // $arr_info = array(
-        //     "board_title" => $arr_post["board_title"],
-        //     "board_contents" => $arr_post["board_contents"]
-        // );
+
         $result_cnt = insert_board_info( $arr_post );
 
         header( "Location: board_list.php" );
@@ -29,17 +26,13 @@
     <script src="./JS/board.js"></script>
     <title>입력</title>
     <style>
-        body{
-            /* background-image: url("./img/wave.png"); */
-            background: linear-gradient(45deg, #f7e2cc, #a7d7d9, #01b8c8) no-repeat;
-        }
+        /* body{
+            background: linear-gradient(180deg, #f7e2cc, #a7d7d9, #01b8c8) no-repeat;
+        } */
     </style>
 </head>
 <body>
-    <form action="board_insert.php" method="post" class="form_cu">
-        <div class="wave_img_2">
-            <img src="./img/cloud.png" alt="바다2">
-        </div>
+    <form action="board_insert.php" method="post" class="form_cu" enctype="multipart/form-data">
         <div class="board_insert">
             <?php include("./board_header.php"); ?>
             <hr>
@@ -52,11 +45,8 @@
             <br>
             <div class="btn_div">
                 <button type="submit">입력</button>
-                <button type="button" onclick="location.href='board_list.php'">이전</button>
+                <button type="button" onclick="location.href='board_list.php'">목록</button>
             </div>
-        </div>
-        <div class="wave_img_1">
-            <img src="./img/wave.png" alt="바다1">
         </div>
     </form>
 </body>

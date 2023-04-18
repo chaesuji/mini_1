@@ -26,14 +26,14 @@
         <div class="board_detail">
             <?php include("./board_header.php"); ?>
             <hr>
-            <p class="detail_p_title">게시글 번호 : <span class="detail_p_content"><?php echo $result_info["board_no"] ?></span></p>
+            <p class="detail_p_title">게시글 번호 : <span class="detail_p"><?php echo $result_info["board_no"] ?></span></p>
             <p class="detail_p_title">게시글 작성일 : <span class="detail_p"><?php echo $result_info["board_write_date"] ?></span></p>
             <p class="detail_p_title">게시글 제목 : <span class="detail_p"><?php echo $result_info["board_title"] ?></span></p>
             <label for="textarea_label" class="text_area_label">게시글 내용 : </label>
                 <textarea id="textarea_label" cols="50" rows="10" class="detail_p"><?php echo $result_info["board_contents"] ?></textarea>
             <div class="btn_div">
                 <!-- <button type="button" onclick="history.back();">이전</button> -->
-                <button type="button" onclick="location.href='board_list.php'">이전</button>
+                <button type="button" onclick="location.href='board_list.php'">목록</button>
                 <button type="button">
                     <a class="a_mo_del" href="board_update.php?board_no=<?php echo $result_info["board_no"] ?>">수정</a>
                 </button>
